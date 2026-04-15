@@ -1,19 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 :root {
+  /* ── Neutrals ─────────────────────────────────── */
   --color-white: #ffffff;
-  --color-gray-100: #f7f3f6;
-  --color-gray-200: #f4e6f0;
-  --color-gray-300: #7a6e76;
-  --color-gray-400: #332e32;
-  --color-green-light: #cddfcc;
-  --color-green-base: #52a350;
-  --color-green-dark: #2f5c2d;
-  --color-pink-light: #e9cce1;
-  --color-pink-base: #c257a4;
-  --color-pink-dark: #884074;
+  --color-bg: #fdf6fb;
+  /* fundo geral — rosa quase branco */
+  --color-surface: #fff9fd;
+  /* surface dos cards */
+  --color-gray-100: #ede6ea;
+  /* separadores sutis */
+  --color-gray-300: #b0a0ac;
+  /* texto secundário / placeholder */
+  --color-gray-400: #4a3d47;
+  /* texto principal */
 
+  /* ── Green (pastel) ──────────────────────────── */
+  --color-green-pastel: #d6f0d4;
+  /* badge bg */
+  --color-green-light: #b7e5b5;
+  --color-green-base: #6ab968;
+  /* checkbox border/fill */
+  --color-green-dark: #3d7a3b;
+  /* badge text / label */
+
+  /* ── Pink/Purple (pastel) ────────────────────── */
+  --color-pink-pastel: #f2e4f5;
+  /* botão nova tarefa bg */
+  --color-pink-light: #e8cfe8;
+  --color-pink-base: #c06bb0;
+  /* ênfase / icon */
+  --color-pink-dark: #8a4180;
+  /* hover / delete */
+  --color-pink-badge: #f5d6f0;
+  /* badge bg pink */
+
+  /* ── Lavender accent ─────────────────────────── */
+  --color-lavender: #e8e0f8;
+  --color-lavender-dark: #7c6bb0;
+
+  /* ── Typography ──────────────────────────────── */
   --font-sans: "Cairo", sans-serif;
 
-  --shadow-sm: 0px 4px 8px 0px rgba(54, 23, 45, 0.05);
+  /* ── Shadows ─────────────────────────────────── */
+  --shadow-sm: 0px 2px 8px 0px rgba(140, 60, 120, 0.07);
+  --shadow-md: 0px 4px 16px 0px rgba(140, 60, 120, 0.10);
+  --shadow-card: 0px 1px 4px 0px rgba(140, 60, 120, 0.06);
+}
+
+* {
+  font-family: var(--font-sans);
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
 }
