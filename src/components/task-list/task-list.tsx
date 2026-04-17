@@ -73,6 +73,7 @@ const AddTaskInline = ({ onConfirm, onCancel }: AddTaskInlineProps) => {
         onKeyDown={handleKeyDown}
         onBlur={() => onConfirm(value)}
         placeholder="O que precisa ser feito?"
+        maxLength={100}
         className="flex-1 bg-transparent py-2 text-base font-semibold text-gray-400 outline-none placeholder:text-gray-300"
         aria-label="Título da nova tarefa"
       />

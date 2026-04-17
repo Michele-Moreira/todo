@@ -1,4 +1,4 @@
-import { useReducer, useCallback } from "react";
+import { useReducer, useCallback, useEffect, useMemo } from "react";
 import type { Task } from "@/types/task";
 
 // ─── State ──────────────────────────────────────────────────────────────────
@@ -12,8 +12,8 @@ interface TaskState {
 type TaskAction =
   | { type: "ADD_TASK"; payload: { title: string } }
   | { type: "TOGGLE_TASK"; payload: { id: string } }
-  | { type: "REMOVE_TASK"; payload: { id: string } }
-  | { type: "EDIT_TASK"; payload: { id: string; title: string } };
+  | { type: "EDIT_TASK"; payload: { id: string; title: string } }
+  | { type: "SYNC_TASKS"; payload: { tasks: Task[] } };
 
 // ─── Reducer ────────────────────────────────────────────────────────────────
 
@@ -51,6 +51,9 @@ function taskReducer(state: TaskState, action: TaskAction): TaskState {
         ),
       };
     }
+    case "SYNC_TASKS": {
+      return { tasks: action.payload.tasks };
+    }
   }
 }
 
@@ -65,13 +68,34 @@ interface UseTasksReturn {
   editTask: (id: string, title: string) => void;
 }
 
+const LOCAL_STORAGE_KEY = "todo-app-tasks";
+const MAX_TITLE_LENGTH = 100;
+
 const initialState: TaskState = { tasks: [] };
 
 export function useTasks(): UseTasksReturn {
   const [state, dispatch] = useReducer(taskReducer, initialState);
 
+  // Load from local storage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (stored) {
+      try {
+        const tasks = JSON.parse(stored);
+        dispatch({ type: "SYNC_TASKS", payload: { tasks } });
+      } catch (error) {
+        console.error("Failed to parse tasks from localStorage:", error);
+      }
+    }
+  }, []);
+
+  // Sync to local storage on changes
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state.tasks));
+  }, [state.tasks]);
+
   const addTask = useCallback((title: string) => {
-    const trimmed = title.trim();
+    const trimmed = title.trim().slice(0, MAX_TITLE_LENGTH);
     if (!trimmed) return;
     dispatch({ type: "ADD_TASK", payload: { title: trimmed } });
   }, []);
@@ -85,12 +109,15 @@ export function useTasks(): UseTasksReturn {
   }, []);
 
   const editTask = useCallback((id: string, title: string) => {
-    const trimmed = title.trim();
+    const trimmed = title.trim().slice(0, MAX_TITLE_LENGTH);
     if (!trimmed) return;
     dispatch({ type: "EDIT_TASK", payload: { id, title: trimmed } });
   }, []);
 
-  const completedCount = state.tasks.filter((t) => t.isCompleted).length;
+  const completedCount = useMemo(
+    () => state.tasks.filter((t) => t.isCompleted).length,
+    [state.tasks],
+  );
 
   return {
     tasks: state.tasks,

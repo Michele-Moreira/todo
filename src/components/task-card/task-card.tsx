@@ -68,6 +68,7 @@ const TaskCard = ({ task, onToggle, onRemove, onEdit }: TaskCardProps) => {
             value={editValue}
             onChange={(e) => setEditValue(e.target.value)}
             onKeyDown={handleKeyDown}
+            maxLength={100}
             className="flex-1 border-b-2 border-primary bg-transparent py-1 text-base font-semibold text-gray-400 outline-none placeholder:text-gray-300"
           />
           <div className="flex items-center gap-2">
