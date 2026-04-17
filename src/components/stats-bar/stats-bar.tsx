@@ -10,30 +10,32 @@ interface StatsBarProps {
 // ─── Component ──────────────────────────────────────────────────────────────
 
 const StatsBar = ({ total, completed }: StatsBarProps) => (
-  <div className="mb-4 flex items-center justify-between px-1">
-    <div className="flex items-center gap-2">
-      <span className="text-sm font-semibold text-gray-300">
-        Tarefas criadas
+  <div className="bg-glass mb-6 flex items-center justify-between rounded-full px-6 py-3 shadow-md lg:px-8">
+    <div className="flex items-center gap-3">
+      <span className="text-sm font-bold tracking-tight text-gray-400 uppercase">
+        Criadas
       </span>
       <Badge
         variant="pink"
-        className="h-5 min-w-6 rounded-full bg-pink-badge px-2 text-xs font-bold text-pink-base ring-0"
+        className="bg-primary/10 text-primary shadow-sm h-6 min-w-8 rounded-lg px-2 text-xs font-extrabold ring-0"
         aria-label={`${total} tarefas criadas`}
       >
         {total}
       </Badge>
     </div>
 
-    <div className="flex items-center gap-2">
-      <span className="text-sm font-semibold text-gray-300">
+    <div className="h-6 w-px bg-gray-100" />
+
+    <div className="flex items-center gap-3">
+      <span className="text-sm font-bold tracking-tight text-gray-400 uppercase">
         Concluídas
       </span>
       <Badge
         variant="green"
-        className="h-5 rounded-full bg-green-pastel px-2 text-xs font-bold text-green-dark ring-0"
+        className="bg-green-base/10 text-green-base shadow-sm h-6 rounded-lg px-2 text-xs font-extrabold ring-0"
         aria-label={`${completed} de ${total} concluídas`}
       >
-        {completed === 0 ? "0" : `${completed} de ${total}`}
+        {completed === 0 ? "0" : `${completed} / ${total}`}
       </Badge>
     </div>
   </div>

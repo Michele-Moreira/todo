@@ -17,21 +17,21 @@ interface TaskListProps {
 // ─── Empty State ─────────────────────────────────────────────────────────────
 
 const EmptyState = () => (
-  <div className="flex flex-col items-center gap-5 py-16 text-center">
-    <div className="flex size-20 items-center justify-center rounded-3xl bg-[--color-lavender]">
+  <div className="bg-glass flex flex-col items-center gap-6 rounded-[32px] py-16 text-center shadow-md">
+    <div className="flex size-24 items-center justify-center rounded-full bg-primary/10 shadow-glow">
       <ClipboardList
-        size={40}
-        strokeWidth={1.4}
-        className="text-[--color-lavender-dark]"
+        size={48}
+        strokeWidth={1.2}
+        className="text-primary animate-pulse"
         aria-hidden="true"
       />
     </div>
-    <div className="flex flex-col gap-1.5">
-      <p className="text-sm font-semibold text-[--color-gray-400]">
-        Nenhuma tarefa ainda
+    <div className="flex flex-col gap-2">
+      <p className="text-xl font-bold tracking-tight text-gray-400">
+        Tudo limpo por aqui!
       </p>
-      <p className="text-sm text-[--color-gray-300]">
-        Clique em &ldquo;Nova tarefa&rdquo; para começar
+      <p className="max-w-[240px] text-sm font-medium text-gray-300">
+        Sua lista está vazia. Que tal adicionar algo novo?
       </p>
     </div>
   </div>
@@ -61,8 +61,10 @@ const AddTaskInline = ({ onConfirm, onCancel }: AddTaskInlineProps) => {
   };
 
   return (
-    <div className="flex items-center gap-3 rounded-2xl border-2 border-[--color-green-light] bg-[--color-white] px-4 py-3.5 shadow-[--shadow-sm]">
-      <div className="size-5 shrink-0 rounded-full border-2 border-[--color-green-light] bg-[--color-green-pastel]" />
+    <div className="bg-glass flex items-center gap-4 rounded-[20px] p-1.5 pr-4 shadow-lg ring-2 ring-primary/20 transition-all duration-300 focus-within:ring-primary focus-within:shadow-glow">
+      <div className="flex size-11 shrink-0 items-center justify-center rounded-[14px] bg-primary text-white shadow-md">
+        <Plus size={20} strokeWidth={2.5} />
+      </div>
       <input
         ref={inputRef}
         type="text"
@@ -70,8 +72,8 @@ const AddTaskInline = ({ onConfirm, onCancel }: AddTaskInlineProps) => {
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}
         onBlur={() => onConfirm(value)}
-        placeholder="Digite o título da tarefa..."
-        className="flex-1 bg-transparent text-sm font-medium text-[--color-gray-400] outline-none placeholder:text-[--color-gray-300]"
+        placeholder="O que precisa ser feito?"
+        className="flex-1 bg-transparent py-2 text-base font-semibold text-gray-400 outline-none placeholder:text-gray-300"
         aria-label="Título da nova tarefa"
       />
     </div>
@@ -101,9 +103,15 @@ const TaskList = ({ tasks, onToggle, onRemove, onEdit, onAdd }: TaskListProps) =
           id="add-task-btn"
           aria-label="Criar nova tarefa"
           onClick={() => setIsAdding(true)}
-          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-pink-pastel py-4 text-sm font-semibold text-pink-base shadow-card transition-all duration-150 hover:bg-pink-light hover:shadow-sm active:scale-[0.98]"
+          className="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-[24px] bg-gradient-to-r from-primary to-secondary py-5 text-base font-bold text-white shadow-lg transition-all duration-300 hover:shadow-glow hover:scale-[1.02] active:scale-[0.98]"
         >
-          <Plus size={18} strokeWidth={2.5} aria-hidden="true" />
+          <div className="absolute inset-0 bg-white/10 opacity-0 transition-opacity group-hover:opacity-100" />
+          <Plus
+            size={22}
+            strokeWidth={3}
+            className="transition-transform duration-300 group-hover:rotate-90"
+            aria-hidden="true"
+          />
           Nova tarefa
         </button>
       )}

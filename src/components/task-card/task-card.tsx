@@ -46,8 +46,10 @@ const TaskCard = ({ task, onToggle, onRemove, onEdit }: TaskCardProps) => {
   return (
     <div
       className={cn(
-        "group flex items-center gap-3 rounded-[20px] bg-white px-4 py-3.5 shadow-card transition-all duration-200",
-        isEditing ? "bg-white shadow-md" : "hover:shadow-sm",
+        "bg-glass group flex items-center gap-4 rounded-[24px] px-5 py-4 shadow-sm transition-all duration-300",
+        isEditing
+          ? "ring-2 ring-primary bg-white/90 shadow-md"
+          : "hover:shadow-md hover:scale-[1.01] hover:bg-white/80",
       )}
     >
       {!isEditing && (
@@ -66,22 +68,22 @@ const TaskCard = ({ task, onToggle, onRemove, onEdit }: TaskCardProps) => {
             value={editValue}
             onChange={(e) => setEditValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 border-b-2 border-pink-base bg-transparent py-0.5 text-sm font-medium text-gray-400 outline-none"
+            className="flex-1 border-b-2 border-primary bg-transparent py-1 text-base font-semibold text-gray-400 outline-none placeholder:text-gray-300"
           />
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             <button
               onClick={handleCancel}
-              className="flex size-7 items-center justify-center rounded-lg bg-pink-pastel text-pink-base hover:bg-pink-light"
+              className="flex size-9 items-center justify-center rounded-xl bg-accent/10 text-accent hover:bg-accent hover:text-white transition-colors"
               aria-label="Cancelar edição"
             >
-              <X size={14} strokeWidth={2.5} />
+              <X size={18} strokeWidth={2.5} />
             </button>
             <button
               onClick={handleConfirm}
-              className="flex size-7 items-center justify-center rounded-lg bg-green-base text-white hover:opacity-90"
+              className="flex size-9 items-center justify-center rounded-xl bg-primary text-white shadow-md transition-transform hover:scale-105"
               aria-label="Confirmar edição"
             >
-              <Check size={14} strokeWidth={3} />
+              <Check size={18} strokeWidth={3} />
             </button>
           </div>
         </div>
@@ -89,31 +91,31 @@ const TaskCard = ({ task, onToggle, onRemove, onEdit }: TaskCardProps) => {
         <>
           <span
             className={cn(
-              "flex-1 text-sm font-medium transition-all duration-200",
+              "flex-1 text-base font-semibold transition-all duration-300",
               task.isCompleted
-                ? "text-gray-300 line-through decoration-gray-300 opacity-70"
+                ? "text-gray-300 line-through decoration-gray-300/50 opacity-50"
                 : "text-gray-400",
             )}
           >
             {task.title}
           </span>
 
-          <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+          <div className="flex items-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 translate-x-4">
             <button
               type="button"
               aria-label={`Remover tarefa "${task.title}"`}
               onClick={() => onRemove(task.id)}
-              className="flex size-7 items-center justify-center rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-400"
+              className="flex size-9 items-center justify-center rounded-xl text-gray-300 hover:bg-accent/10 hover:text-accent transition-colors"
             >
-              <Trash2 size={15} />
+              <Trash2 size={18} />
             </button>
             <button
               type="button"
               aria-label={`Editar tarefa "${task.title}"`}
               onClick={() => setIsEditing(true)}
-              className="flex size-7 items-center justify-center rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-400"
+              className="flex size-9 items-center justify-center rounded-xl text-gray-300 hover:bg-primary/10 hover:text-primary transition-colors"
             >
-              <Pencil size={15} />
+              <Pencil size={18} />
             </button>
           </div>
         </>

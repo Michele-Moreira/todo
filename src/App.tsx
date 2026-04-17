@@ -8,15 +8,19 @@ export function App() {
     useTasks();
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[--color-bg] px-4 py-10">
-      {/* Decorative pastel blobs */}
+    <main className="relative min-h-screen overflow-hidden bg-bg-base px-4 py-10 selection:bg-primary/20">
+      {/* Dynamic Animated Blobs */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 -right-32 size-96 rounded-full bg-[--color-pink-pastel] opacity-60 blur-3xl"
+        className="animate-float pointer-events-none absolute -top-48 -right-48 size-[500px] rounded-full bg-primary/20 blur-[100px]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 -left-32 size-96 rounded-full bg-[--color-lavender] opacity-50 blur-3xl"
+        className="animate-float pointer-events-none absolute -bottom-48 -left-48 size-[600px] rounded-full bg-secondary/20 delay-1000 blur-[120px]"
+      />
+      <div
+        aria-hidden="true"
+        className="animate-float pointer-events-none absolute top-1/2 left-1/2 size-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 delay-2000 blur-[100px]"
       />
 
       <div className="relative mx-auto flex w-full max-w-[640px] flex-col gap-10">
