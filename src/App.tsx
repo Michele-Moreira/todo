@@ -4,7 +4,8 @@ import { StatsBar } from "@/components/stats-bar";
 import { TaskList } from "@/components/task-list";
 
 export function App() {
-  const { tasks, completedCount, addTask, toggleTask, removeTask } = useTasks();
+  const { tasks, completedCount, addTask, toggleTask, removeTask, editTask } =
+    useTasks();
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[--color-bg] px-4 py-10">
@@ -28,6 +29,7 @@ export function App() {
             onAdd={addTask}
             onToggle={toggleTask}
             onRemove={removeTask}
+            onEdit={editTask}
           />
         </section>
       </div>

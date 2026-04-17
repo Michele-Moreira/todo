@@ -10,6 +10,7 @@ interface TaskListProps {
   tasks: Task[];
   onToggle: (id: string) => void;
   onRemove: (id: string) => void;
+  onEdit: (id: string, title: string) => void;
   onAdd: (title: string) => void;
 }
 
@@ -79,7 +80,7 @@ const AddTaskInline = ({ onConfirm, onCancel }: AddTaskInlineProps) => {
 
 // ─── Main Component ──────────────────────────────────────────────────────────
 
-const TaskList = ({ tasks, onToggle, onRemove, onAdd }: TaskListProps) => {
+const TaskList = ({ tasks, onToggle, onRemove, onEdit, onAdd }: TaskListProps) => {
   const [isAdding, setIsAdding] = useState(false);
 
   const handleConfirm = (title: string) => {
@@ -100,7 +101,7 @@ const TaskList = ({ tasks, onToggle, onRemove, onAdd }: TaskListProps) => {
           id="add-task-btn"
           aria-label="Criar nova tarefa"
           onClick={() => setIsAdding(true)}
-          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[--color-pink-pastel] py-4 text-sm font-semibold text-[--color-pink-base] shadow-[--shadow-card] transition-all duration-150 hover:bg-[--color-pink-light] hover:shadow-[--shadow-sm] active:scale-[0.98]"
+          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-pink-pastel py-4 text-sm font-semibold text-pink-base shadow-card transition-all duration-150 hover:bg-pink-light hover:shadow-sm active:scale-[0.98]"
         >
           <Plus size={18} strokeWidth={2.5} aria-hidden="true" />
           Nova tarefa
@@ -123,6 +124,7 @@ const TaskList = ({ tasks, onToggle, onRemove, onAdd }: TaskListProps) => {
                 task={task}
                 onToggle={onToggle}
                 onRemove={onRemove}
+                onEdit={onEdit}
               />
             </li>
           ))}

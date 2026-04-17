@@ -12,7 +12,8 @@ interface TaskState {
 type TaskAction =
   | { type: "ADD_TASK"; payload: { title: string } }
   | { type: "TOGGLE_TASK"; payload: { id: string } }
-  | { type: "REMOVE_TASK"; payload: { id: string } };
+  | { type: "REMOVE_TASK"; payload: { id: string } }
+  | { type: "EDIT_TASK"; payload: { id: string; title: string } };
 
 // ─── Reducer ────────────────────────────────────────────────────────────────
 
@@ -41,6 +42,15 @@ function taskReducer(state: TaskState, action: TaskAction): TaskState {
         tasks: state.tasks.filter((task) => task.id !== action.payload.id),
       };
     }
+    case "EDIT_TASK": {
+      return {
+        tasks: state.tasks.map((task) =>
+          task.id === action.payload.id
+            ? { ...task, title: action.payload.title }
+            : task,
+        ),
+      };
+    }
   }
 }
 
@@ -52,6 +62,7 @@ interface UseTasksReturn {
   addTask: (title: string) => void;
   toggleTask: (id: string) => void;
   removeTask: (id: string) => void;
+  editTask: (id: string, title: string) => void;
 }
 
 const initialState: TaskState = { tasks: [] };
@@ -73,6 +84,12 @@ export function useTasks(): UseTasksReturn {
     dispatch({ type: "REMOVE_TASK", payload: { id } });
   }, []);
 
+  const editTask = useCallback((id: string, title: string) => {
+    const trimmed = title.trim();
+    if (!trimmed) return;
+    dispatch({ type: "EDIT_TASK", payload: { id, title: trimmed } });
+  }, []);
+
   const completedCount = state.tasks.filter((t) => t.isCompleted).length;
 
   return {
@@ -81,5 +98,6 @@ export function useTasks(): UseTasksReturn {
     addTask,
     toggleTask,
     removeTask,
+    editTask,
   };
 }

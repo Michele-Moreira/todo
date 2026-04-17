@@ -1,51 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
-:root {
-  /* ── Neutrals ─────────────────────────────────── */
-  --color-white: #ffffff;
-  --color-bg: #fdf6fb;
-  /* fundo geral — rosa quase branco */
-  --color-surface: #fff9fd;
-  /* surface dos cards */
-  --color-gray-100: #ede6ea;
-  /* separadores sutis */
-  --color-gray-300: #b0a0ac;
-  /* texto secundário / placeholder */
-  --color-gray-400: #4a3d47;
-  /* texto principal */
+@theme {
+  --color-bg-base: #f8f7f9;
+  --color-surface: #ffffff;
+  
+  --color-gray-100: #f1eff2;
+  --color-gray-300: #9ca3af;
+  --color-gray-400: #333333;
 
-  /* ── Green (pastel) ──────────────────────────── */
-  --color-green-pastel: #d6f0d4;
-  /* badge bg */
+  --color-green-pastel: #d9f3d6;
   --color-green-light: #b7e5b5;
-  --color-green-base: #6ab968;
-  /* checkbox border/fill */
-  --color-green-dark: #3d7a3b;
-  /* badge text / label */
+  --color-green-base: #539d52;
+  --color-green-dark: #376336;
 
-  /* ── Pink/Purple (pastel) ────────────────────── */
-  --color-pink-pastel: #f2e4f5;
-  /* botão nova tarefa bg */
-  --color-pink-light: #e8cfe8;
+  --color-pink-pastel: #f4e5f0;
+  --color-pink-light: #ecd0e5;
   --color-pink-base: #c06bb0;
-  /* ênfase / icon */
   --color-pink-dark: #8a4180;
-  /* hover / delete */
-  --color-pink-badge: #f5d6f0;
-  /* badge bg pink */
+  --color-pink-badge: #f4e5f0;
 
-  /* ── Lavender accent ─────────────────────────── */
-  --color-lavender: #e8e0f8;
-  --color-lavender-dark: #7c6bb0;
-
-  /* ── Typography ──────────────────────────────── */
+  --shadow-sm: 0px 2px 4px 0px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0px 4px 12px 0px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0px 1px 3px 0px rgba(0, 0, 0, 0.04);
+  
   --font-sans: "Cairo", sans-serif;
+}
 
-  /* ── Shadows ─────────────────────────────────── */
-  --shadow-sm: 0px 2px 8px 0px rgba(140, 60, 120, 0.07);
-  --shadow-md: 0px 4px 16px 0px rgba(140, 60, 120, 0.10);
-  --shadow-card: 0px 1px 4px 0px rgba(140, 60, 120, 0.06);
+:root {
+  --font-sans: "Cairo", sans-serif;
 }
 
 * {
@@ -54,6 +37,7 @@
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-base);
   -webkit-font-smoothing: antialiased;
+  color: var(--color-gray-400);
 }

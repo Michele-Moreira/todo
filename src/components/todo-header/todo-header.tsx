@@ -1,28 +1,25 @@
-import { CheckCircle2 } from "lucide-react";
+import { Watch } from "lucide-react";
 
 // ─── Component ──────────────────────────────────────────────────────────────
 
 const TodoHeader = () => (
-  <header className="flex flex-col items-center gap-4">
-    {/* Logo container with gradient */}
-    <div className="relative flex size-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[--color-pink-light] to-[--color-lavender] shadow-[--shadow-md]">
-      {/* Inner glow ring */}
-      <div className="absolute inset-1.5 rounded-2xl bg-gradient-to-br from-[--color-pink-pastel] to-[--color-lavender] opacity-60" />
-      <CheckCircle2
-        size={40}
-        strokeWidth={1.6}
-        className="relative z-10 text-[--color-pink-dark]"
+  <header className="flex flex-col items-center gap-4 pt-4">
+    {/* Logo container - white card with soft shadow as in image */}
+    <div className="relative flex size-18 items-center justify-center rounded-[22px] bg-white shadow-md ring-1 ring-gray-100">
+      <Watch
+        size={36}
+        strokeWidth={2.2}
+        className="text-green-base"
         aria-hidden="true"
       />
+      {/* Small check overlay if needed, but Watch icon itself is often enough or we can use CheckSquare */}
     </div>
 
     <div className="flex flex-col items-center gap-1">
-      <h1 className="text-3xl font-bold tracking-tight text-[--color-gray-400]">
+      <h1 className="text-[28px] font-[800] tracking-tight text-gray-400">
         ToDo List
       </h1>
-      <p className="text-sm font-medium text-[--color-gray-300]">
-        Organize suas tarefas do dia
-      </p>
+      <p className="sr-only">Organize suas tarefas do dia</p>
     </div>
   </header>
 );
