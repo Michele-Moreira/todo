@@ -1,73 +1,74 @@
-# React + TypeScript + Vite
+# ✨ Glow Todo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Lista de tarefas moderna, vibrante e cheia de energia! Gerencie seus afazeres com uma interface glassmorphism premium, animações fluidas e persistência de dados.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19**: Biblioteca core para construção da interface reativa
+- **TypeScript**: Tipagem estática para maior segurança e produtividade
+- **Vite**: Build tool extremamente rápida para desenvolvimento moderno
+- **Tailwind CSS 4**: Estilização baseada em utilitários com suporte nativo a variáveis CSS e novos recursos
+- **Lucide React**: Biblioteca de ícones minimalistas e consistentes
+- **Google Fonts**: Fonte [Outfit](https://fonts.google.com/specimen/Outfit) para uma estética limpa e moderna
 
-## React Compiler
+## 🎨 Layout
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- Visual focado em **Glassmorphism**, com backgrounds translúcidos e desfoque (blur)
+- **Blobs Animados**: Fundo dinâmico com círculos coloridos que flutuam suavemente
+- Suporte a **Gradients**: Uso estratégico de gradientes em textos e elementos de destaque
+- **Micro-animações**: Feedback visual em hover e interações com transições suaves
+- Design **Mobile-First**: Interface totalmente responsiva que se adapta a qualquer dispositivo
+- Sombras personalizadas (**Shadow Glow**) para profundidade e realce
 
-## Expanding the ESLint configuration
+## 💡 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Gerenciamento Completo**: Adicione, edite, conclua e remova tarefas de forma intuitiva
+- **Stats Real-time**: Barra de progresso dinâmica mostrando o total de tarefas e o que já foi concluído
+- **Persistência Local**: Suas tarefas são salvas automaticamente no `localStorage` do navegador
+- **Feedback Visual**: Indicações claras de conclusão e estados de interação
+- **Validação Inteligente**: Limite de caracteres e tratamento de espaços vazios
+- **Interface Fluida**: Navegação rápida sem recarregamento de página
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+## ⚡ Como usar
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/Michele-Moreira/todo.git
+   ```
+2. Instale as dependências:
+   ```bash
+   pnpm install
+   ```
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   pnpm dev
+   ```
+4. Abra o link gerado no navegador e comece a organizar seu dia!
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## 📁 Estrutura
+
+```
+├── public/          # Ativos estáticos
+├── src/
+│   ├── assets/      # Imagens e estilos globais
+│   ├── components/  # Componentes React reutilizáveis
+│   │   ├── stats-bar/
+│   │   ├── task-card/
+│   │   ├── task-list/
+│   │   ├── todo-header/
+│   │   └── ui/       # Componentes base de UI
+│   ├── hooks/       # Custom hooks (lógica de estado)
+│   ├── lib/         # Utilitários (shadcn/clsx/tailwind-merge)
+│   ├── types/       # Definições de tipos TypeScript
+│   ├── App.tsx      # Componente principal
+│   └── main.tsx     # Ponto de entrada
+├── index.html
+├── package.json
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ✨ Créditos
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+Projeto desenvolvido com foco em UI/UX moderna, aplicando as melhores práticas de React e estilização avançada com Tailwind CSS.
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+---
