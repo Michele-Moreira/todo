@@ -69,6 +69,6 @@ Lista de tarefas moderna, vibrante e cheia de energia! Gerencie seus afazeres co
 
 ## ✨ Créditos
 
-Projeto desenvolvido com foco em UI/UX moderna, aplicando as melhores práticas de React e estilização avançada com Tailwind CSS.
+Projeto desenvolvido junto da Ricketseat com foco em UI/UX moderna, aplicando as melhores práticas de React e estilização avançada com Tailwind CSS.
 
 ---
