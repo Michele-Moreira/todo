@@ -12,6 +12,7 @@ interface TaskState {
 type TaskAction =
   | { type: "ADD_TASK"; payload: { title: string } }
   | { type: "TOGGLE_TASK"; payload: { id: string } }
+  | { type: "REMOVE_TASK"; payload: { id: string } }
   | { type: "EDIT_TASK"; payload: { id: string; title: string } }
   | { type: "SYNC_TASKS"; payload: { tasks: Task[] } };
 
